@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarees</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .item {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="item" style="position: relative;">
+
+    <span style="
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: red;
+        color: white;
+        padding: 5px;
+        z-index: 2;
+        font-size: 14px;
+    ">
+        SALE
+    </span>
+
+    <img src="S1.jpeg" width="400" class="product-img"><br>
+        <span id="like1" onclick="toggleLike(1,'like')" style="font-size:40px;cursor:pointer;">🤍</span><br>
+        <button onclick="addToCart('Saree 1', this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+        <img src="S2.jpeg" width="400" class="product-img"><br>
+        <span id="like2" onclick="toggleLike(2,'like')" style="font-size:40px;cursor:pointer;">🤍</span><br>
+        <button onclick="addToCart('Saree 2', this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+        <img src="S3.jpeg" width="400" class="product-img"><br>
+        <span id="like3" onclick="toggleLike(3,'like')" style="font-size:40px;cursor:pointer;">🤍</span><br>
+        <button onclick="addToCart('Saree 3', this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+        <img src="S4.jpeg" width="400" class="product-img"><br>
+        <span id="like4" onclick="toggleLike(4,'like')" style="font-size:40px;cursor:pointer;">🤍</span><br>
+        <button onclick="addToCart('Saree 4', this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+        <img src="S5.jpeg" width="400" class="product-img"><br>
+        <span id="like5" onclick="toggleLike(5,'like')" style="font-size:40px;cursor:pointer;">🤍</span><br>
+        <button onclick="addToCart('Saree 5', this)">Add to Cart</button>
+    </div>
+
+
+    <!-- CART DISPLAY -->
+    <div style="border:1px solid #ccc; padding:20px; margin:30px; text-align:center;">
+
+    <h2>Your Cart</h2>
+
+    <ul id="cartList" style="list-style:none; padding:0;"></ul>
+
+    <p id="totalItems" style="font-size:18px;">Total: 0</p>
+
+    
+
+    <canvas id="cartCanvas" width="350" height="120"></canvas>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
