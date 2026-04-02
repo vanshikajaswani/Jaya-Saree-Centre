@@ -121,35 +121,35 @@ if (clockCanvas) {
         let centerY = 125;
         let radius = 100;
 
-        // 🟢 LOW (11–3)
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, -Math.PI/2, Math.PI/2);
-        ctx.fillStyle = "#a8e6a3";
-        ctx.fill();
-
-        // 🟠 MEDIUM (3–6)
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, Math.PI/2, Math.PI);
-        ctx.fillStyle = "#ffd27f";
-        ctx.fill();
-
-        // 🔴 PEAK (6–9)
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, Math.PI, 1.5 * Math.PI);
-        ctx.fillStyle = "#ff8a8a";
-        ctx.fill();
-
-        // 🔵 OTHER
+        // VERY LIGHT (rest time)
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, 1.5 * Math.PI, 2 * Math.PI);
-        ctx.fillStyle = "#a3c9f1";
+        ctx.fillStyle = "#ffe5e5";
         ctx.fill();
 
-        // CLOCK BORDER
+        // LIGHT RED (11–3)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, -Math.PI/2, Math.PI/2);
+        ctx.fillStyle = "#ffb3b3";
+        ctx.fill();
+
+        // MEDIUM RED (3–6)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, Math.PI/2, Math.PI);
+        ctx.fillStyle = "#ff6666";
+        ctx.fill();
+
+        // DARK RED (6–9)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, Math.PI, 1.5 * Math.PI);
+        ctx.fillStyle = "#cc0000";
+        ctx.fill();
+
+        // BORDER
         ctx.beginPath();
         ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
         ctx.stroke();
@@ -192,7 +192,6 @@ if (clockCanvas) {
         );
         ctx.lineWidth = 3;
         ctx.stroke();
-
     }
 
     setInterval(drawClock, 1000);
