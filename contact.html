@@ -63,6 +63,140 @@
 
     </form>
 </div>
+<div class="section" style="text-align:center; margin-top:30px;">
+
+    <h2>Sales Overview</h2>
+    <canvas id="barCanvas" width="400" height="250" style="border:1px solid #ccc;"></canvas>
+
+</div>
+
+<div class="section" style="text-align:center; margin-top:30px;">
+
+    <h2>Shop Crowd Indicator</h2>
+    <canvas id="clockCanvas" width="250" height="250" style="border:1px solid #ccc;"></canvas>
+
+</div>
+
+<div class="section" style="text-align:center; margin-top:30px;">
+    <h3>Thank you for visiting Jaya Saree Centre 💖</h3>
+</div>
 <h1>Contact us: 9893159671<br>8770507722</h1>
+<script>
+let barCanvas = document.getElementById("barCanvas");
+
+if (barCanvas) {
+    let ctx = barCanvas.getContext("2d");
+
+    let data = [120, 90, 70, 50]; // sales
+    let labels = ["Saree", "Kurti", "Suit", "SS"];
+    let colors = ["brown", "green", "blue", "purple"];
+
+    for (let i = 0; i < data.length; i++) {
+
+        let x = 50 + i * 70;
+        let height = data[i];
+
+        ctx.fillStyle = colors[i];
+        ctx.fillRect(x, 200 - height, 40, height);
+
+        ctx.fillStyle = "black";
+        ctx.fillText(labels[i], x, 220);
+    }
+}
+let clockCanvas = document.getElementById("clockCanvas");
+
+if (clockCanvas) {
+
+    let ctx = clockCanvas.getContext("2d");
+
+    function drawClock() {
+
+        let now = new Date();
+        let hour = now.getHours() % 12;
+        let minute = now.getMinutes();
+
+        ctx.clearRect(0, 0, 250, 250);
+
+        let centerX = 125;
+        let centerY = 125;
+        let radius = 100;
+
+        // 🟢 LOW (11–3)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, -Math.PI/2, Math.PI/2);
+        ctx.fillStyle = "#a8e6a3";
+        ctx.fill();
+
+        // 🟠 MEDIUM (3–6)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, Math.PI/2, Math.PI);
+        ctx.fillStyle = "#ffd27f";
+        ctx.fill();
+
+        // 🔴 PEAK (6–9)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, Math.PI, 1.5 * Math.PI);
+        ctx.fillStyle = "#ff8a8a";
+        ctx.fill();
+
+        // 🔵 OTHER
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, 1.5 * Math.PI, 2 * Math.PI);
+        ctx.fillStyle = "#a3c9f1";
+        ctx.fill();
+
+        // CLOCK BORDER
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        // NUMBERS
+        ctx.fillStyle = "black";
+        ctx.font = "14px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        for (let num = 1; num <= 12; num++) {
+            let angle = (num - 3) * (Math.PI * 2) / 12;
+            let x = centerX + Math.cos(angle) * 80;
+            let y = centerY + Math.sin(angle) * 80;
+            ctx.fillText(num, x, y);
+        }
+
+        // HOUR HAND
+        let hourAngle =
+            ((hour + minute / 60) * Math.PI * 2) / 12 - Math.PI / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(
+            centerX + Math.cos(hourAngle) * 50,
+            centerY + Math.sin(hourAngle) * 50
+        );
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+        // MINUTE HAND
+        let minAngle =
+            (minute * Math.PI * 2) / 60 - Math.PI / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(
+            centerX + Math.cos(minAngle) * 70,
+            centerY + Math.sin(minAngle) * 70
+        );
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+    }
+
+    setInterval(drawClock, 1000);
+}
+</script>
 </body>
 </html>
